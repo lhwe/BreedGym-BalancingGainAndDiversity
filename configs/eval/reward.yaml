@@ -1,0 +1,146 @@
+experiment_name: "reward"
+
+num_generations: 10
+trials: 100
+interval: 90.0
+test_seed_start: 12345
+training_seeds:
+  - 2026
+  - 810
+  - 888
+  - 666
+  - 1
+  #- 3
+  #- 89757
+  #- 27
+  #- 77
+  #- 20260819
+monitor_heterozygosity: true
+methods:
+  - name: "Standard GS"
+    baseline: true
+    reward_type: max_gebv
+    observation: standard
+    use_observe_generation: false
+    run_dir_template: null
+
+#  - name: "Standard PPO"
+#    baseline: false
+#    reward_type: "max_gebv"
+#    observation: standard
+#    use_observe_generation: false
+#    run_dir_template: "checkpoints/vanilla_seed_{seed}"
+#    w_std: 0
+#    w_inbreed: 0
+
+  - name: "reward_adjustw_std0_he0"
+    baseline: false
+    reward_type: max_gebv
+    observation: standard
+    use_observe_generation: true
+    use_heterozygosity_observation: false
+    run_dir_template: "checkpoints/observegen_seed_{seed}"
+    w_std: 0
+    w_inbreed: 0
+
+  - name: "reward_adjustw_std0.5_he0"
+    baseline: false
+    reward_type: max_gebv
+    observation: standard
+    use_observe_generation: true
+    use_heterozygosity_observation: false
+    run_dir_template: "checkpoints/reward_adjustw_std0.5_he0_seed_{seed}"
+    w_std: 0.5
+    w_inbreed: 0
+
+  - name: "reward_adjustw_std0.5_he500"
+    baseline: false
+    reward_type: max_gebv
+    observation: standard
+    use_observe_generation: true
+    use_heterozygosity_observation: false
+    run_dir_template: "checkpoints/reward_adjustw_std0.5_he500_seed_{seed}"
+    w_std: 0.5
+    w_inbreed: 500
+
+  - name: "reward_adjustw_std0.5_he1000"
+    baseline: false
+    reward_type: max_gebv
+    observation: standard
+    use_observe_generation: true
+    use_heterozygosity_observation: false
+    run_dir_template: "checkpoints/reward_adjustw_std0.5_he1000_seed_{seed}"
+    w_std: 0.5
+    w_inbreed: 1000
+
+  - name: "reward_adjustw_std1_he0"
+    baseline: false
+    reward_type: max_gebv
+    observation: standard
+    use_observe_generation: true
+    use_heterozygosity_observation: false
+    run_dir_template: "checkpoints/reward_adjustw_std1_he0_seed_{seed}"
+    w_std: 1.0
+    w_inbreed: 0
+
+  - name: "reward_adjustw_std1_he500"
+    baseline: false
+    reward_type: max_gebv
+    observation: standard
+    use_observe_generation: true
+    use_heterozygosity_observation: false
+    run_dir_template: "checkpoints/reward_adjustw_std1_he500_seed_{seed}"
+    w_std: 1.0
+    w_inbreed: 500
+
+  - name: "reward_adjustw_std1_he1000"
+    baseline: false
+    reward_type: max_gebv
+    observation: standard
+    use_observe_generation: true
+    use_heterozygosity_observation: false
+    run_dir_template: "checkpoints/reward_adjustw_std1_he1000_seed_{seed}"
+    w_std: 1.0
+    w_inbreed: 1000
+
+  - name: "reward_adjustw_std0_he500"
+    baseline: false
+    reward_type: max_gebv
+    observation: standard
+    use_observe_generation: true
+    use_heterozygosity_observation: false
+    run_dir_template: "checkpoints/reward_adjustw_std0_he500_seed_{seed}"
+    w_std: 0
+    w_inbreed: 500
+
+  - name: "reward_adjustw_std0_he1000"
+    baseline: false
+    reward_type: max_gebv
+    observation: standard
+    use_observe_generation: true
+    use_heterozygosity_observation: false
+    run_dir_template: "checkpoints/reward_adjustw_std0_he1000_seed_{seed}"
+    w_std: 0
+    w_inbreed: 1000
+
+  - name: "Full-sib Penalty"
+    baseline: false
+    reward_type: "full_sib"
+    observation: standard
+    use_observe_generation: true
+    run_dir_template: "checkpoints/reward_pedigree_fullsib_seed_{seed}"
+    w_gain: 1.0
+    w_sib_penalty: 5.0
+
+  - name: "Hybrid"
+    baseline: false
+    reward_type: "hybrid"
+    observation: standard
+    use_observe_generation: true
+    run_dir_template: "checkpoints/reward_pedigree_hybrid_seed_{seed}"
+    w_gain: 1.0
+    he_prop: 0.2
+    w_sib_penalty: 5.0
+    ema_alpha: 0.05
+    min_he_weight: 10.0
+    max_he_weight: 1000.0

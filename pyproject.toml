@@ -1,0 +1,14 @@
+[project]
+name = "het-breedgym"
+version = "0.1.0"
+description = "BreedGym with heterozygosity observation for RL-based plant breeding"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "torch>=2.5.1",
+    "stable-baselines3>=2.8.0",
+    "scipy>=1.17.1",
+    "wandb>=0.27.0",
+    "tensorboard>=2.20.0",
+    "pyyaml>=6.0.3",
+]

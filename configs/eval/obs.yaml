@@ -1,0 +1,40 @@
+experiment_name: "obscomparison"
+
+num_generations: 30
+trials: 100
+interval: 90.0
+test_seed_start: 12345
+training_seeds:
+  - 2026
+  - 810
+  - 888
+  - 666
+  - 1
+  - 3
+  - 89757
+  - 27
+  - 77
+  - 20260819
+monitor_heterozygosity: true
+use_heterozygosity_observation: true
+methods:
+  - name: "Generation-aware reference"
+    baseline: false
+    observation: standard
+    use_observe_generation: true
+    reward_type: "max_gebv"
+    run_dir_template: "checkpoints/reward_adjustw_std0.5_he1000_seed_{seed}"
+
+  - name: "Standard GS"
+    baseline: true
+    observation: standard
+    use_observe_generation: true
+    reward_type: "max_gebv"
+    run_dir_template: null
+
+  - name: "Heterozygosity-augmented"
+    baseline: false
+    observation: het_interaction
+    use_observe_generation: true
+    reward_type: "max_gebv"
+    run_dir_template: "checkpoints/maxgebv_het_interaction_std_0.5_inbreed_1000.0_seed_{seed}"

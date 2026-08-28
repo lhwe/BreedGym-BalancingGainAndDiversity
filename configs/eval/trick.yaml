@@ -1,0 +1,47 @@
+experiment_name: "baseline_figure"
+
+num_generations: 10
+trials: 100
+interval: 90.0
+test_seed_start: 12345
+training_seeds:
+  - 2026
+  - 810
+  - 888
+  - 666
+  - 1
+  - 3
+  - 89757
+  - 27
+  - 77
+  - 20260819
+monitor_heterozygosity: true
+use_heterozygosity_observation: false
+methods:
+  - name: "Standard GS"
+    baseline: true
+    reward_type: "max_gebv"
+    observation: standard
+    use_observe_generation: false
+    run_dir_template: null
+
+  - name: "RL: Vanilla"
+    baseline: false
+    reward_type: "max_gebv"
+    observation: standard
+    use_observe_generation: false
+    run_dir_template: "checkpoints/vanilla_seed_{seed}"
+
+  - name: "RL: Observe Generation"
+    baseline: false
+    reward_type: "max_gebv"
+    observation: standard
+    use_observe_generation: true
+    run_dir_template: "checkpoints/observegen_seed_{seed}"
+
+  - name: "RL: Curriculum Learning"
+    baseline: false
+    reward_type: "max_gebv"
+    observation: standard
+    use_observe_generation: true
+    run_dir_template: "checkpoints/curriculum_seed_{seed}"

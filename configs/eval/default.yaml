@@ -1,0 +1,50 @@
+# Dataset
+genome: sample_full_pop_geno.npy
+genetic_map: sample_genetic_map.txt
+# Environment
+n_eval_envs: 1
+individual_per_gen: 200
+k_best: 20
+n_crosses: 10
+num_generations: 30
+# Evaluation
+trials: 100
+interval: 90.0
+test_seed_start: 12345
+training_seeds:
+  - 2026
+  - 810
+  - 888
+  - 666
+  - 1
+  - 3
+  - 89757
+# Evaluation behavior
+monitor_heterozygosity: true
+# Set TRUE only when evaluating models that were actually trained with heterozygosity in their observation.
+use_heterozygosity_observation: false
+# Reward
+reward_type: max_gebv
+w_std: 0.5
+w_inbreed: 1000.0
+# CNN
+out_channels1: 64
+kernel_size1: 32
+stride1: 8
+out_channels2: 16
+kernel_size2: 8
+stride2: 2
+# Policy
+policy_hiddens: 32
+value_hiddens: 32
+gen_features_dim: 16
+# Output
+save_dir: figures
+cache_dir: figures/caches
+annotate_seeds: false
+# Methods
+methods:
+  - name: "Standard GS"
+    baseline: true
+    observation: standard
+    run_dir_template: null

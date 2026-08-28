@@ -1,0 +1,22 @@
+unique_name: reward_pedigree_hybrid
+seed: 2026
+validation_seed: 12345
+
+num_generations: 10
+total_timesteps: 500000
+
+#reward_type: "full_sib"
+#w_gain: 1.0
+#w_sib_penalty: 5.0
+reward_type: "hybrid"  # "full_sib", "max_gebv"
+w_gain: 1.0
+he_prop: 0.2
+w_sib_penalty: 5.0
+ema_alpha: 0.05
+min_he_weight: 10.0
+max_he_weight: 1000.0
+
+use_observe_generation: true
+curriculum_learning: false
+curriculum_timesteps: [10000, 30000, 80000, 200000, 350000, 500000]
+curriculum_gen_numbers: [4, 5, 6, 7, 9, 10]

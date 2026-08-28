@@ -1,0 +1,10 @@
+envs/
+checkpoints/
+logs/
+__pycache__/
+
+wandb/
+figures/
+
+uv.lock
+.idea/

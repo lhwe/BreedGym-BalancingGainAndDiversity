@@ -1,0 +1,15 @@
+unique_name: baseline
+seed: 2026
+validation_seed: 12345
+
+num_generations: 10
+total_timesteps: 500000
+
+w_std: 0
+w_inbreed: 0
+reward_shaping: false
+
+use_observe_generation: true
+curriculum_learning: false
+curriculum_timesteps: [10000, 30000, 80000, 200000, 350000, 500000]
+curriculum_gen_numbers: [4, 5, 6, 7, 9, 10]
